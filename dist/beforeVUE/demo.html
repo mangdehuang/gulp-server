@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+    <ul id="list">
+        <li id="root">mytree[+]</li>
+    </ul>
+</body>
+<script>
+    var data = [
+        {value:"mytree",isfolder:true,children:[{value:"hello",isfolder:false},
+            {value:"wat",isfolder:false},{value:"chil folder",isfolder:true,children:[{value:"c1",isfolder:false}]}]},
+        ];
+    var $list = $("#list");
+    $("#root").data("data",data[0]);
+    $("li").on("click",function (e) {//展开合上
+        var dataLi = $(this).data("data");
+        if(dataLi.isfolder){
+               var children = $(findChildren(dataLi.children));
+                $(this).append(children);
+                showData();
+        }else{
+            return;
+        }
+        e.stopPropagation();
+        return false;
+    });
+    function findChildren(node) {
+        var html = "<ul>";
+        node.forEach(function (e) {
+            var li = "";
+            li = "<li>"+e.value+"</li>";
+            $(li).data("data",e);
+            html = html + li;
+        });
+        html +="</ul>";
+        return html;
+    }
+    
+    function  showData() {
+        var $li = $("li");
+        for(var i=0;i<$li.length;i++){
+            console.log($($li[i]).data("data"));
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .blue{
+            color: blue;
+        }
+        .size{
+            font-size: 20px;
+        }
+        .div{
+            width:100px;
+            height: 100px;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--数据模板展示  模板计算-->
+        <p >{{message}}</p>
+        <p>{{message + 2}}</p>
+        <p>{{num1+2}}</p>
+        <span v-once>这个将不会改变: {{ message }}</span>
+        <p v-html="rendHtml+2"></p>
+        <p v-text="msg+2"></p>
+        <p v-if="isShow">111</p>
+        <p v-if="isShow">111</p>
+        <p v-show="isShow">11</p>
+        <p v-if="type == 3">3</p>
+        <p v-else-if="3">23</p>
+        <p v-else="">222</p>
+        <ul>
+            <li v-for="item in items">
+                {{item.item}}
+            </li>
+        </ul>
+        <!--属性设置-->
+        <p v-bind:class="blue ">blue</p> //class
+        <p v-bind:class="[blue,{size:isShow}]">blue</p> //class
+        <p v-bind:class="{size:isShow}">blsssue</p> //class
+        <p v-bind:id="blue">blue</p> //id
+        <a v-bind:href="href">百度</a> //href
+        <p v-bind:data-key="dataKey">data-key</p> //自定义属性
+        <!--事件绑定-->
+        <div v-html="div" :class="divClass" v-on:click="dothis();">
+            {{5}}
+        </div>
+        <p>过滤器</p>
+        <p>
+           {{num1 | addOne(11)}}
+        </p>
+        <p>使用函数 代替通道</p>
+        <p>
+            {{showMesage()}}
+        </p>
+        <p v-bind:class="setBlue()">test function</p>
+        <p>计算属性</p>
+        <p>计算属性与使用方法</p>
+        <!--此处执行一次计算-->
+        <p>{{ reverseMessage }}</p>
+        <p>{{reverseMessage}}</p>
+        <!--此处执行两次计算-->
+        <p>{{reverseMessageMethod()}}</p>
+        <p>{{reverseMessageMethod()}}</p>
+        <p>{{getNow}}</p>
+        <p>{{getNowMethod()}}</p>
+        <p>watch</p>
+        <p>{{fullName}}</p>
+        <p>{{getFullName}}</p>
+        <p>{{fullNameComputed}}</p>
+        <input v-model="inputmessage">
+        <span>{{inputmessage}}</span>
+
+        <!--<input type="checkbox" v-model="checkValue" v-bind:true-value="tttttttttttt" v-bind:false-value="tttttttttttt"/>-->
+        <!--<div>value:{{checkValue}}</div>-->
+
+        <div>
+            <span>new pro</span>
+        </div>
+    </div>
+</body>
+<script>
+    var data = {
+        message:'hello vue',
+        rendHtml:'<input />',
+        msg:2,
+        isShow:false,
+        type:23,
+        items:[{item:22},{item:33}],
+        blue:'blue',
+        href:'http://www.baidu.com',
+        dataKey:'mttype',
+        size:'size',
+        div:'<div></div>',
+        divClass:'div',
+        temp:1,
+        num1:2,
+        fullName:"full name",
+        lastName:"name",
+        firstName:"full",
+        inputmessage:'',
+    };
+    var vm = new Vue({
+        el:'#app',
+        data:data,
+        methods:{
+            dothis:function () {
+//                alert(this);
+            },
+            showMesage:function () {
+                return this.message+"showMesage value";
+            },
+            setBlue:function () {
+                return 'blue';
+            },
+            getNowMethod:function () {
+                return Date.now();
+            },
+            reverseMessageMethod:function () {
+                console.log('reverseMessageMethod');
+                return this.message.split('').reverse().join("");
+            },
+        },
+        //api
+        created:function () {
+//            console.log(this.message + "11");
+        },
+        mounted:function () {
+
+        },
+        computed:{
+            reverseMessage:function () {
+                console.log('reverseMessage');
+                return this.message.split('').reverse().join("");
+            },
+            getNow:function () {
+                return Date.now();
+            },
+            getFullName: {
+                get:function(){
+                    return this.firstName + this.lastName;
+                },
+                set:function () {
+                    console.log("test");
+                }
+
+            },
+            fullNameComputed:{
+                get:function(){
+                    return this.firstName + this.lastName;
+                },
+                set:function (newValue) {
+                    console.log("fullNameComputed set");
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        },
+        filters:{
+            addOne:function(value,p1){//调用了两次
+                console.log(value);
+                console.log(p1);
+                return value+p1;
+            }
+        },
+        watch:{
+//            firstName:function (val) {
+//                return this.fullName = val + this.lastName;
+//            },
+//            lastName:function (val) {
+//                return this.fullName = this.firstName + val;
+//            }
+        }
+    });
+
+//    Object.defineProperty(data,'myProperty',{
+//        value:'myPropertyvalue',
+//    });
+    //属性设置  删除问题
+//    data.msg = "test";
+//    delete  data.message;
+//    data.message = "change111";
+//    data.message = "change1111";
+//    delete  data.message;
+//    data.message = "change1";
+</script>
+</html>

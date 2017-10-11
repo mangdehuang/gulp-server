@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery-chosen/chosen.css">
+    <script src="jquery-chosen/jquery-1.8.0.min.js"></script>
+    <script src="jquery-chosen/chosen.jquery.js"></script>
+    <!--<script src="jquery-chosen/chosen.proto.min.js"></script>-->
+    <style>
+        .s1{
+            width: 200px;
+        }
+        .s2{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<select class="s1">
+    <option value="1">123</option>
+    <option value="2">246</option>
+    <option value="3">aa3</option>
+    <option value="4">ssssbb4</option>
+</select>
+
+
+<select class="s2">
+    <option value="1">123</option>
+    <option value="2">246</option>
+    <option value="3">aa3</option>
+    <option value="4">ssssbb4</option>
+</select>
+<div>
+    s1:<span class="s1value"></span>
+    s2:<span class="s2value"></span>
+</div>
+
+
+</body>
+    <script>
+        $(function(){
+            var $s1 = $(".s1");
+            $(".s1").chosen({
+                search_contains:true,
+                search_input:false,
+//                search_input_text:"test"
+            });
+
+
+            $(".s2").chosen({
+                search_contains:true,
+                search_input:true,
+                search_input_text:"输入搜索内容"
+            });
+            $(".s1").val("2");
+            $(".s1").trigger('liszt:updated');
+            $(".s2").val("2");
+            $(".s2").trigger('liszt:updated');
+
+            setInterval(function(){
+                    $(".s1value").text($(".s1").val());
+                    $(".s2value").text($(".s2").val());
+            },200)
+        });
+    </script>
+</html>

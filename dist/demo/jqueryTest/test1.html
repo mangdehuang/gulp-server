@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+<input id="d1" type="text"/>
+</body>
+<script>
+//    $(function () {
+//        //$(document).trigger('mytest');
+//    });
+//    var Dog = function(){
+//        this.eventUtil = $(document);
+//    };
+//    Dog.prototype.run = function () {
+//        this.eventUtil.trigger('run')
+//    }
+//
+//    var Person = function () {
+//        this.eventUtil = $(document);
+//        this.eventUtil.on('run',this.catch)
+//    }
+//    Person.prototype.catch = function () {
+//        alert('我抓住你了')
+//    }
+//
+//    var dog = new Dog()
+//    var per = new Person()
+//    dog.run()
+
+    var Data={data:''};
+    Data.setData = function (value) {
+        if (value != this.data){
+            $(document).trigger('myplug.datachange',value);
+        }
+        this.data = value;
+    }
+    $(document).on('myplug.datachange',function (evet,value) {
+        $('#d1').val(value);
+    })
+    Data.setData('11111111');
+    setTimeout(function () {
+        Data.setData('888888888');
+    },5000)
+
+
+</script>
+</html>

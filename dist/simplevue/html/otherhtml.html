@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {};
+    Object.defineProperty(obj,'test',{
+
+    });
+    console.log(obj.test);
+
+    var obj1 = {};
+    Object.defineProperty(obj1,"test",{
+        value:'testvalue'
+    });
+    obj1.test = "change"
+    console.log(obj1.test);
+
+    var obj2 = {};
+    Object.defineProperty(obj2,"test",{
+        value:"testvale",
+        writable:true,
+    });
+    obj2.test = 'change';
+    for(var key in obj2){
+        console.log(key);
+    }
+    console.log(obj2.test);
+
+
+    var obj3 = {};
+    Object.defineProperty(obj3,'test',{
+        value:'testvalue',
+        enumerable:false,
+    });
+    for(var key in obj3){
+        console.log(key);
+    }
+
+
+    var obj4 = {};
+    Object.defineProperty(obj4,'test',{
+        value:'testvalue',
+        writable:true,
+        configurable:true,
+    });
+    delete obj4.test;
+    console.log(obj4.test);
+//    Object.defineProperty(obj4,'test',{
+//        value:'testvale',
+//        writable:false,
+//        configurable:false,
+//    });
+////    delete  obj4.test;
+//    console.log(obj4.test);
+
+
+    Object.defineProperty(obj4,'test',{
+        value:'testvale',
+        writable:false,
+        configurable:true,
+    });
+    console.log(obj4.test);
+
+
+    var obj5 = {};
+    var initvale = "";
+    Object.defineProperty(obj5,'test',{
+        set:function (value) {
+            console.log('setting');
+            initvale = value;
+        },
+        get:function () {
+            console.log('get')
+            return initvale;
+        }
+    });
+    obj5.test = "test";
+    console.log(obj5.test);
+</script>
+</html>

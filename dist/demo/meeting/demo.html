@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 800px;
+            height: 1000px;
+            background-color: #1EAEDB;
+        }
+        .contain{
+            margin: 0 auto;
+            width: 600px;
+            height: 100%;
+            background-color: #BEE927;
+        }
+        .item{
+            float: left;
+            background-color: #ce4c61;
+            width: 100px;
+            height: 50px;
+            margin-left: 25px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body style="padding: 50px;">
+
+<button class="reload">reload</button>
+<button class="stopinterval">stopinterval</button>
+    <div class="main">
+        <div class="contain">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+            <div class="item">0</div>
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+
+    var time1 = setInterval(function () {
+        $(".main").width($(".main").width()-10);
+        $(".contain").width($(".contain").width()-10);
+        console.log($(".item").css("marginLeft"));
+        if($(".item").css("marginLeft").replace("px","") == 25){
+            console.log("small");
+        }
+    },500);
+
+    $(".reload").on("click",function(){
+        location.reload();
+    });
+
+    $(".stopinterval").on("click",function(){
+        clearInterval(time1);
+    });
+
+</script>
+</html>

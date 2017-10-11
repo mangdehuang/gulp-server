@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery Splitter Demo</title>
+    <meta name="Description" content="jQuery Splitter Demo"/>
+    <link rel="shortcut icon" href=""/>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/jquery.splitter.js"></script>
+    <link href="css/jquery.splitter.css" rel="stylesheet"/>
+    <!--[if IE]>
+        <script src="js/html5.js"></script>
+    <![endif]-->
+<script>
+jQuery(function($) {
+    //1.需要指定 宽高  orientation:'vertical 表示垂直切  分成两列
+    var splitter = $('#widget').width(1000).height(300).split({
+       orientation:'vertical',
+//       limit:100,//限制边界为100px   但是实际有差距  大概在97px
+       position:'50%',//设置初始位置
+        invisible:false,//是否显示拖动条
+       onDrag: function(event) {
+           console.log("onDrag");
+        },
+        onDragStart:function(){
+           console.log("onDragStart");
+        },
+        onDragEnd:function () {
+            console.log("onDragEnd");
+        }
+   });
+
+   //子元素继续切  可以让水平垂直都拖拽
+//   $('#foo').split({orientation:'horizontal', limit:10});
+//   $('#a').split({orientation:'vertical', limit:10});
+//   $('#spliter2').css({width: 200, height: 300}).split({orientation: 'horizontal', limit: 20});
+});
+</script>
+<style>
+#spliter2 .a {
+  background-color: #2d2d2d;
+}
+#spliter2 .b {
+  background-color: #2d002d;
+}
+#foo {
+  background-color: #E92727;
+}
+#x {
+  background-color: #EFBD73;
+}
+#y {
+  background-color: #EF3e32;
+}
+#b {
+  background-color: #73A4EF;
+}
+#bar {
+  background-color: #BEE927;
+}
+    div{
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+<div id="widget" style="width: 1000px;height: 300px;">
+  <div id="foo" style="width: 200px;height: 300px;">foo</div>
+   <div id="bar" style="width: 200px;height: 300px;">bar.</div>
+   <div id="bar1" style="width: 500px;height: 300px; background-color: #0FA0CE">bar1</div>
+</div> <!-- end of #widget -->
+
+</body>
+</html>

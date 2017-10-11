@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        td{
+            width: 200px;
+            height: 20px;
+            background: red;
+        }
+        li{
+            margin: 0px;
+            padding: 0px;
+            width: 82px;
+            height: 22px;
+            background-color: red;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="test">
+        <li>111</li>
+        <li>22</li>
+        <li>2333</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+        </tr>
+    </table>
+
+</body>
+<script>
+//    $("#test").on('click','li',function () {
+//        alert($(this).html());
+//    });
+
+
+
+//    var result = $.extend({},
+//        {name:'test1',prop:{name:"prop1",p:'s',p1:'p1'}},
+//        {name1:'test1',prop:{name:"prop2",p:'s2',p2:'p2'}}
+//     );
+//    console.log(result);
+
+//    $.extend({
+//        ttt:function () {
+//              console.log('extend');
+//            }
+//        }
+//    );
+//    $.ttt();
+
+//    $.fn.extend({
+//        ttt:function () {
+//            alert('ttt');
+//        }
+//    });
+//    $(window).ttt();
+
+//(function () {
+//    var getMinMax=function (mt,mtArray) {
+//        var mtids = [],
+//            mts = {},
+//            maxMtid = 0,
+//            minMtid = 200;
+//        var mtid = mt.mtid;
+//
+//        if(!mtArray) return null;
+//        for(var i in mtArray){
+//            mtids.push(parseInt(mtArray[i].mtid));
+//        }
+//
+//        for(var key in mtids){
+//            //两种判断处理边界
+//            if(mtids[key] < mtid && mtids[key] > maxMtid){//比本身小的最大的
+//                maxMtid = mtids[key];
+//            }
+//            if(mtids[key] > mtid && minMtid > mtids[key]){//比本身大的最小的
+//                minMtid = mtids[key];
+//            }
+//        }
+//
+//        mts.minMax = maxMtid;//比本身小的最大的
+//        mts.maxMin = minMtid;//比本身大的最小的
+//        console.log(mts);
+//    };
+//
+//    var mtArray = [
+//        {'mtid':'6'},
+//        {'mtid':'7'},
+//        {'mtid':'9'},
+//        {'mtid':'19'}
+//    ];
+//    var mt={'mtid':'8'};
+//    getMinMax(mt,mtArray);
+//})();
+    
+    
+(function () {
+    var Plan = function () {
+        this.blod = 200;
+        this.definesLeave = 1;
+    };
+
+    var p1 = new Plan();
+    var p2 = Object.create(p1);
+    p1.blod = 300;
+    console.log(p1);
+    console.log(p2);
+})();
+
+
+</script>
+</html>

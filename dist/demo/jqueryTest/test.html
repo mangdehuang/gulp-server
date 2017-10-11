@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $(function () {
+        //$(document).trigger('mytest');
+    });
+    var Dog = function(){
+        this.eventUtil = $(document);
+    };
+    Dog.prototype.run = function () {
+        this.eventUtil.trigger('run')
+    }
+
+    var Person = function () {
+        this.eventUtil = $(document);
+        this.eventUtil.on('run',this.catch)
+    }
+    Person.prototype.catch = function () {
+        alert('我抓住你了')
+    }
+
+    var dog = new Dog()
+    var per = new Person()
+    dog.run()
+
+
+</script>
+</html>

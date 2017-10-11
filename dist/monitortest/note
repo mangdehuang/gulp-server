@@ -1,0 +1,29 @@
+1.不能在初始化 help的时候加入iframe  否则 在ie9下面会 一直不消失
+2.在helper中进入到monior之后 然后在增加iframe 会出现ie9 拖入之后就不会触发drop  helper一直跟着鼠标走 必现
+3.去掉zindex iframfix 之后还是无法放入
+4.cursorAt  如果为负数  但是drop的时候 鼠标在helper里面  就还是不能正常放置
+
+
+  var html = ''
+              + '<div id="helper" style=" background-color: green ; width:200px; height:100px; z-Index:9998">'
+              + '  <div style=" background-color: blue;width: 100px; height: 100px;filter:progid:DXImageTransform.Microsoft.Alpha(Style=0 Opacity=100);">'
+			  +'   <div>tttt</div>'
+              + '   <iframe id="iframebar" src="about:blank" frameBorder=0 marginHeight=0 marginWidth=0 '
+              + '   style=" background-color: red; filter:progid:DXImageTransform.Microsoft.Alpha(Style=0 Opacity=100);  position:absolute; top:0; left:0;width:50%; height:50%; z-Index:-1;" '
+              + '     >'
+              + '   </iframe> '
+              + '  </div> '
+              + ' </div> '
+
+
+
+      id helper   指定z-index width height
+      第二层 div 主要是用来浮在iframe 上面  但是必现要配合 上层的id=helper来 才可以 成功  设置z-idex不可用
+         有content
+         有iframe
+
+
+ droppable 必须在draggable中  设置最上层的div  否则在droppable中的over 中不可用重新赋值给help  会失效
+
+
+ <div id="droppable"   style="width: 200px;height: 100px;  padding: 5px; margin: 5px;">  必现要设置padding margin  否则在ie8下会 消失

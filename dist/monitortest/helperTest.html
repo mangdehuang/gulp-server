@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-1.12.3.min.js"></script>
+    <script src="jquery-ui-1.9.2.custom.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1" style="width: 100px;height: 200px;background-color: red;">
+    </div>
+    <div id="div2" style="width: 100px;height: 200px;background-color: green;">
+    </div>
+
+<script>
+    $('#div1').draggable({
+            helper:function () {
+                var html = '<div><div>test</div></div>';
+               return html
+            }
+    });
+
+    $('#div2').droppable({
+        tolerance: "pointer",
+        over:function (event,ui) {
+            console.log($(ui.helper[0]).html());
+        },
+        out:function (event,ui) {
+
+        }
+    });
+
+
+</script>
+</body>
+</html>

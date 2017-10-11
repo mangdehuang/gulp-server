@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<script src="js/babel-standalone.js"></script>-->
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+//    let{t1,t2,t3} = {t2:"t2",t1:"t1",t4:"ss"};
+//    console.log(t1);
+//    console.log(t2);
+//    console.log(t3);
+//let { foo1: foo, bar1: bar } = { foo1: "aaa", bar1: "bbb" };
+//console.log(foo);//aaa
+//console.log(bar);//bbb
+//    let {foo:bar} =  {foo:"11",bar:"22"};
+//    console.log(bar);
+//    console.log(foo);
+
+//
+//    let foo;
+//    {
+//        {foo} = {foo:1}
+//    };
+//    console.log(foo);
+
+//    var text = String.fromCodePoint(0x20BB7);
+//    var s1 = "aBc";
+//    for(let i of s1){
+//        console.log(i);
+//    }
+//    console.log(s1.at(0));
+//    console.log(s1.includes("a"));
+//    console.log(s1.includes("a",1));
+//    console.log(s1.startsWith('aBc',0));
+//    console.log(s1.endsWith("a",1));
+
+//     console.log('a'.repeat(2));
+
+//     console.log("ad".padStart(5,"bcbc"));
+//    console.log("ad".padEnd(5,"bcbc"));
+
+
+//    var reg = new RegExp('xyz','i');
+//      console.log(Number.parseInt("1.2"));
+//      console.log(Number.parseFloat(2.01));
+//      console.log(Number.parseFloat('2.0'));
+
+
+//     console.log(Math.trunc("1.9"));
+//     console.log(Math.trunc(NaN));
+//        console.log(Array.from("leng"));
+//    console.log(Array.from([1,2,3]));
+
+
+//    var arr = [1,2,3,4];
+//    var item = arr.find(function(value,index,arr){
+//        return value > 2;
+//    });
+//
+//    var index = [0,1,1,1,1,4,5].findIndex(function (value,index,arr){
+//        return value >2;
+//    });
+//    console.log(item);
+//    console.log(index);
+
+    var arr = [0,2,2,3,4];
+    var keys = arr.keys();
+//    console.log(keys.next().value); //0
+//    console.log(keys.next().value); //1
+//    console.log(keys.next().value);//2
+//    console.log(keys.next().value);//3
+//    console.log(keys.next().value);//4
+//    console.log(keys.next().value);//undefined
+//
+//let letter = ['a', 'b', 'c'];
+//let entries = letter.entries();
+//console.log(entries.next().value); // [0, 'a']
+//console.log(entries.next().value); // [1, 'b']
+//console.log(entries.next().value); // [2, 'c']
+
+//    console.log(arr.includes(3,-1));
+
+    var strages = {
+        "S":function(a){
+            return a *3;
+        },
+        "A":function (a) {
+            return a * 2;
+        },
+        "B":function (a) {
+            return a *1;
+        }
+    };
+    var getBons = function (s,a) {
+        return strages[s](a);
+    }
+
+    console.log(getBons("S",2));
+    console.log(getBons("A",2));
+    console.log(getBons("B",2));
+</script>
+</html>

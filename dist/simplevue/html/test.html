@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .error{
+            color:red;
+        }
+        .big{
+            font-size: 20px;
+        }
+        .width100{
+            width: 100px;
+        }
+        .height100{
+            height: 100px;
+        }
+        .bigRed{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>
+          {{msg|addOne}}
+        </p>
+        <p>计算属性 计算class</p>
+        <p v-bind:class="classObj">computer</p>
+        <p v-bind:style="styleObj">style</p>
+        <ul>
+            <li v-for="(value,index) in items">
+                {{value.message}} -{{index}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,index,index1) in arr">
+                {{value}} -{{index}} - {{index1}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in tempObj">
+                {{value}} -{{key}} - {{index}}
+            </li>
+        </ul>
+        <div>
+            <span v-for="n in 10">{{n}}</span>
+        </div>
+
+        <p>数组操作</p>
+        <p>显示过滤</p>
+        <ul>
+            <li v-for="item in computedArr ">{{item}}</li>
+        </ul>
+
+        <p>事件处理器</p>
+        <button v-on:click="count +=1">点击</button>
+        <p>点击了{{count}}次</p>
+        <button v-on:click="say('hi',$event)">hi</button>
+        <button v-on:click="say('hello')">hello</button>
+        <button v-on:click="say">null param</button>
+        <p>事件修饰符</p>
+        <p>.stop</p>
+        <div v-on:click.self="say('div')"    v-bind:class="normaDiv">
+            <div v-on:click="say('div sub')" :class="normaDiv" ></div>
+        </div>
+    </div>
+</body>
+<script>
+    var data = {
+        msg:'test',
+        num:2,
+        isError:false,
+        isbig:true,
+        items:[{message:"msg1",age:11},{message:'msg2',age:12}],
+        tempObj:{message:"msg1",age:11},
+        arr:[4,5,6,7],
+        count:0,
+        };
+    var vm = new Vue({
+        el:"#app",
+        data:data,
+        methods:{
+            say:function (msg,event) {
+//                console.log(event);
+//                console.log(msg);
+                alert(msg);
+            },
+        },
+        filters:{
+            addOne:function (value) {
+                console.log("filter");
+                return value+1;
+            }
+        },
+        computed:{
+            classObj:function () {
+                return{
+                    error:this.isError,
+                    big:this.isbig,
+                }
+            },
+            styleObj:function () {
+                return{
+                    color:'red',
+                    'font-size':'20px',
+                }
+            },
+            computedArr:function(){
+                return this.arr.filter(function (num) {
+                    return num %2 ==0;
+                });
+            },
+            normaDiv:function () {
+                return {
+                    width100:true,height100:true,bigRed:true
+                };
+            }
+        },
+    });
+data.num = 3;
+
+</script>
+</html>

@@ -1,0 +1,24 @@
+children: [
+    {
+    title: null, // (required) Displayed name of the node (html is allowed here)  界面上最终显示的字符串 可是是html片段
+    key: null, // May be used with activate(), select(), find(), ...
+    isFolder: false, // Use a folder icon. Also the node is expandable but not selectable.
+    isLazy: false, // Call onLazyRead(), when the node is expanded for the first time to allow for delayed creation of children.  懒加载onLazyRead 需要设置这个字段为true
+    tooltip: null, // Show this popup text. 提示语
+    href: null, // Added to the generated <a> tag.
+    icon: null, // Use a custom image (filename relative to tree.options.imagePath). 'null' for default icon, 'false' for no icon.使用自己的图片还是用默认图片 还是不使用图片
+    addClass: null, // Class name added to the node's span tag. 给每个node上添加的样式
+    noLink: false, // Use <span> instead of <a> tag for this node  如果是true 表示用span替换掉a
+    activate: false, // Initial active status. 初始化状态
+    focus: false, // Initial focused status. 初始化状态
+    expand: false, // Initial expanded status.初始化状态
+    select: false, // Initial selected status.初始化状态
+    hideCheckbox: false, // Suppress checkbox display for this node.隐藏多选框
+    unselectable: false, // Prevent selection.是否可以选中
+    // The following attributes are only valid if passed to some functions:
+    children: null // Array of child nodes.直接加载的数据
+    // NOTE: we can also add custom attributes here.
+    // This may then also be used in the onActivate(), onSelect() or onLazyTree() callbacks.
+    },
+    […]
+]

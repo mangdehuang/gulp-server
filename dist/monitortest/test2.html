@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-1.12.3.min.js"></script>
+    <script src="jquery-ui-1.9.2.custom.min.js"></script>
+
+    <script>
+        //最终版本
+      $(function () {
+        $("#draggable").draggable({
+          cursorAt: {top: 10, left: 10},
+          zIndex: 9999,
+          iframeFix: false,
+          helper: function (event) {
+            var html = ''
+              + '<div id="helper" style=" background-color: green ; width:200px; height:100px; z-Index:9998">'
+              + '  <div class="helper_content" style=" background-color: blue;width: 100%;' +
+                   ' height: 100%;filter:progid:DXImageTransform.Microsoft.Alpha(Style=0 Opacity=100);">'
+                +'   <div id="content_detail" style="background-color: blue;width: 100%;height: 100%;">tttt</div>'
+              + '  </div> '
+              + ' </div> '
+            return html;
+          },
+          start: function () {
+
+          },
+          drag: function () {
+
+          },
+          stop: function () {
+            //alert('stop')
+          }
+        });
+        $("#droppable").droppable({
+          tolerance: "pointer",
+          over:function (event,ui) {
+              var siframe ='<iframe id="iframebar" src="about:blank" frameBorder=0 marginHeight=0 marginWidth=0 '
+              + '   style=" background-color: red; filter:progid:DXImageTransform.Microsoft.Alpha(Style=0 Opacity=100); ' +
+                  ' position:absolute; top:0; left:0;width:100%; height:100%; z-Index:-1;" '
+              + '     >'
+              + '   </iframe> ';
+              ui.helper.find('.helper_content').append($(siframe));
+          },
+            out:function (event,ui) {
+                if(ui.helper.find('#iframebar').length>0){
+                    ui.helper.find('#iframebar').remove();
+                }
+            }
+        })
+
+      })
+    </script>
+
+
+</head>
+<body>
+<div id="draggable" style="width: 200px;height: 100px; background-color: aqua">111</div>
+<br>
+<br>
+<div id="droppable"
+     style="width: 200px;height: 100px;  padding: 15px; margin: 15px;">
+    <object style="border: solid 1px;border-color: green;" type="application/x-kdvmonitor" id="1" width="100%"
+            height="100%">
+        <param name="pluginid" value="1"/>
+        <param name="wndtype" value="MonitorWnd"/>
+        <param name="isportmeeting" value="1"/>
+    </object>
+</div>
+</body>
+</html>

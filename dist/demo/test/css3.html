@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1{
+            display: flex;
+            width: 500px;
+            height: 200px;
+            direction: rtl;
+        }
+        .item{
+            border: 1px solid blanchedalmond;
+            width: 100px;
+            /*height: 100px;*/
+        }
+    </style>
+</head>
+<body style="padding: 300px;">
+    <div style="border: 1px solid red;" class="d1">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+<script>
+
+    var makeSound = function(animal){
+        animal.sound();
+    };
+
+    var Duck = function(){
+        Duck.prototype.sound = function(){
+            console.log("gaga");
+        }
+    };
+    var Dog = function(){
+        Dog.prototype.sound = function(){
+            console.log("wangwang");
+        }
+    };
+    makeSound(new Duck());
+    makeSound(new Dog());
+</script>
+</html>

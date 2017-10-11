@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div id="container">
+        <p>{{test}}</p>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: "#container",
+        data: {
+            test : 'hello world'
+        },
+        beforeCreate: function(){
+            console.log(this);
+            console.log("beforeCreate--");
+            showData('创建vue实例前',this);
+        },
+        created: function(){
+            console.log("created--");
+            showData('创建vue实例后',this);
+        },
+        beforeMount:function(){
+            console.log("beforeMount--");
+            showData('挂载到dom前',this);
+        },
+        mounted: function(){
+            console.log("mounted--");
+            showData('挂载到dom后',this);
+        },
+        beforeUpdate:function(){
+            console.log("beforeUpdate--");
+            showData('数据变化更新前',this);
+        },
+        updated:function(){
+            console.log("updated--");
+            showData('数据变化更新后',this);
+        },
+        beforeDestroy:function(){
+            vm.test ="3333";
+            console.log("beforeDestroy--");
+            showData('vue实例销毁前',this);
+        },
+        destroyed:function(){
+            console.log("destroyed--");
+            showData('vue实例销毁后',this);
+        }
+
+    });
+
+    function realDom(){
+        console.log('真实dom结构：' + document.getElementById('container').innerHTML);
+    }
+    function showData(process,obj){
+        console.log(process);
+        console.log('data 数据：' + obj.test)
+        console.log('挂载的对象：')
+        console.log(obj.$el)
+        realDom();
+        console.log('------------------')
+        console.log('------------------')
+    }
+</script>
+</html>

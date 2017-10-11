@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var s = "test";
+    function getRandom(maxvalue,minvalue) {
+        return Math.floor(Math.random()*maxvalue + minvalue);
+    }
+    function  randomRepalce(text) {
+        var nums = ['a','b','c','d'];
+        var n = getRandom(nums.length,0);
+        var loc = getRandom(text.length,0);
+        var result = s.replace(s.charAt(loc),nums[n]);
+        return result;
+    }
+
+    setInterval(function () {
+       var result = randomRepalce("test");
+//        var result = getRandom(5,1);
+        console.log(result);
+    },1000)
+
+</script>
+</html>

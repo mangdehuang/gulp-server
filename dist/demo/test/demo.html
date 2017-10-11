@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Example</title>
+    <link rel="stylesheet" href="css/split-pane.css" />
+    <script src="../js/jquery-1.12.3.min.js"></script>
+    <script src="js/split-pane.js"></script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .split-pane-divider {
+            background: #aaa;
+        }
+        #left-component {
+            width: 20em;
+        }
+        #my-divider {
+            left: 20em; /* Same as left component width */
+            width: 5px;
+        }
+        #right-component {
+            left: 20em;  /* Same as left component width */
+            margin-left: 5px;  /* Same as divider width */
+        }
+
+
+        .test  div{
+            color:red;
+        }
+        .test>div{
+            color:green;
+        }
+    </style>
+    <!--<script>-->
+        <!--$(function() {-->
+            <!--$('div.split-pane').splitPane();-->
+        <!--});-->
+    <!--</script>-->
+</head>
+<body>
+<div class="split-pane fixed-left">
+    <!--<div class="split-pane-component" id="left-component">-->
+        <!--This is the left component-->
+    <!--</div>-->
+    <!--<div class="split-pane-divider" id="my-divider"></div>-->
+    <!--<div class="split-pane-component" id="right-component">-->
+        <!--This is the right component-->
+        <!--<button onclick="$('div.split-pane').splitPane('firstComponentSize', 10);">Collapse first component</button>-->
+    <!--</div>-->
+    
+    
+    <div>
+        <select class="s1" id="s1">
+            <option value="1">1</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+        </select>
+    </div>
+    <div id="#test" class="test">
+        <div>
+            test1
+        </div>
+        <div>
+            test1
+            <div>
+
+                test2
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script>
+//        $("#s1").val(1);
+//        $("#s1").change(function(){
+//            console.log("change");
+//        });
+//        setTimeout(function(){
+//            $("#s1").val(2);
+//        },1000);
+//
+//
+//        var Plane = function(){
+//            this.blood = 100;
+//            this.att =1;
+//        };
+//        Object.create = Object.create||function(obj){
+//            var F = function(){};
+//            F.prototype = obj;
+//            console.log(obj);
+//            return new F();
+//        }
+//        var p1 = new Plane();
+//        p1.blood = 200;
+//        var cp1 = Object.create(p1);
+//        console.log(p1);
+//        console.log(cp1);
+//        console.log(cp1.blood);
+//        console.log(cp1.att);
+//        console.log(cp1.prototype);
+//        console.log(Plane.prototype.isPrototypeOf(cp1));
+//        console.log(p1.prototype);
+//        console.log(Plane.prototype.isPrototypeOf(cp1));
+//        var dom = $(".test>div");
+//        console.log($(".test>div"));
+//
+//
+//
+//        function  Person() {
+//
+//        }
+//
+//        var p1 = new Person();
+//        console.log(p1.constructor);
+//        var arr = [];
+//        console.log(typeof arr);
+//        console.log(arr instanceof Object);
+
+
+function  getv() {
+    var arr = [2,3,3] ;
+    for(var i in arr){return arr[i]};
+}
+console.log(getv());
+</script>
+</html>

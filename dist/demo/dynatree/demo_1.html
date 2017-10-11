@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.custom.js"></script>
+    <script src="js/jquery.dynatree.js"></script>
+    <link href="css/ui.dynatree.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="tree"> </div>
+</body>
+<script>
+    $(function(){
+        $("#tree").dynatree({
+            children: [
+                {title: "Item 1",isFolder: true,key:"Item 1",
+                    children:[
+                    ]
+                },
+                {title: "Folder 2", isFolder: true, key: "folder2",
+                    children: [
+                        {title: "Sub-item 2.1"},
+                        {title: "Sub-item 2.2"}
+                    ]
+                },
+                {title: "Item 3"}
+            ],
+            onActivate: function(dtnode) {
+                // This function is called, when a node is clicked
+                // A DynaTreeNode object is passed as argument.
+//               alert("You activated " + dtnode.data.title);
+            },
+            onExpand:function (flag,node) {
+                if(flag){
+                    node.addChild({
+                        title: "Child node 1",
+                        tooltip: "This child node was added programmatically.",
+                        isFolder: true
+                    });
+                }
+            }
+        });
+
+        var rootNode = $("#tree").dynatree("getRoot");
+        // Call the DynaTreeNode.addChild() member function and pass options for the new node
+        var childNode = rootNode.addChild({
+            title: "Child node 1",
+            tooltip: "This child node was added programmatically.",
+//            expand:true,
+            isFolder: true
+        });
+        //
+//        childNode.addChild({
+//            title: "Document using a custom icon",
+//            icon: "customdoc1.gif"
+//        });
+    });
+
+</script>
+</html>
